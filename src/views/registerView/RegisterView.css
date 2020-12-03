@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Sansita+Swashed&display=swap');
+
+.register {
+  position: relative;
+  background-color: white;
+  width: 400px;
+  height: 400px;
+  margin: 200px auto;
+  border-radius: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 2px 3px 10px 2px rgba(0, 0, 0, 0.3);
+}
+
+.register h1 {
+  font-family: 'Sansita Swashed', cursive;
+  position: absolute;
+  top: 30px;
+}
+
+.register__form {
+  display: flex;
+  flex-direction: column;
+  height: 260px;
+  width: 300px;
+  justify-content: space-between;
+}
