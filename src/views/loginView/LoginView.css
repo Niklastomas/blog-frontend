@@ -1,9 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Sansita+Swashed&display=swap');
-
 .login {
   position: relative;
   background-color: white;
-  width: 400px;
+  max-width: 400px;
   height: 400px;
   margin: 200px auto;
   border-radius: 7px;
@@ -22,10 +20,13 @@
 .login__form {
   display: flex;
   flex-direction: column;
-  height: 180px;
+  height: 220px;
   width: 300px;
   justify-content: space-between;
 }
 
-.login__input {
+.login__form p {
+  padding: 10px;
+  text-align: center;
+  font-size: 16px;
 }

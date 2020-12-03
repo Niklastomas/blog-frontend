@@ -4,7 +4,7 @@
   position: relative;
   background-color: white;
   width: 400px;
-  height: 400px;
+  height: 450px;
   margin: 200px auto;
   border-radius: 7px;
   display: flex;
@@ -19,10 +19,14 @@
   top: 30px;
 }
 
+.register p {
+  text-align: center;
+}
+
 .register__form {
   display: flex;
   flex-direction: column;
-  height: 260px;
+  height: 300px;
   width: 300px;
   justify-content: space-between;
 }

@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from '../../utils/axios';
 
 const initialState = {
-  user: {},
+  user: null,
   status: 'idle',
   error: null,
 };
@@ -22,7 +22,11 @@ export const register = createAsyncThunk('user/register', async (user) => {
 const userSlice = createSlice({
   name: 'user',
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    signOut: (state) => {
+      state.user = null;
+    },
+  },
   extraReducers: {
     [login.pending]: (state, action) => {
       state.status = 'loading';
@@ -48,5 +52,7 @@ const userSlice = createSlice({
     },
   },
 });
+
+export const { signOut } = userSlice.actions;
 
 export default userSlice.reducer;

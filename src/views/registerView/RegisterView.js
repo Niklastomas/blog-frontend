@@ -1,6 +1,7 @@
 import { Button, TextField } from '@material-ui/core';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { login, register } from '../../redux/user/userSlice';
 
 import './RegisterView.css';
@@ -92,9 +93,16 @@ function RegisterView() {
             value={user.confirmPassword}
           />
         </div>
-        <Button type='submit' variant='contained'>
+        <Button
+          type='submit'
+          variant='contained'
+          disabled={status === 'loading' ? true : false}
+        >
           Register
         </Button>
+        <p>
+          Already have an account? <Link to='/login'>Sign In</Link>
+        </p>
       </form>
     </div>
   );
