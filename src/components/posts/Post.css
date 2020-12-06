@@ -1,0 +1,35 @@
+.post {
+  border: 1px solid lightgray;
+  padding: 10px;
+  margin: 10px;
+  max-width: 800px;
+  display: flex;
+}
+
+.post__image {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: scale-down;
+}
+.post__title {
+}
+
+.post__column {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 10px;
+}
+
+.post__content {
+  margin-top: 10px;
+}
+
+.post__content a {
+  padding: 10px;
+}
+
+.post__published {
+  margin-top: 10px;
+}
