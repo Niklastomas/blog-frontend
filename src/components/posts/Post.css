@@ -33,3 +33,9 @@
 .post__published {
   margin-top: 10px;
 }
+
+@media screen and (max-width: 480px) {
+  .post {
+    flex-direction: column;
+  }
+}

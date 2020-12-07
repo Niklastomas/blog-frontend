@@ -1,0 +1,42 @@
+.postDetail {
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.postDetail__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.postDetail__body {
+  max-width: 800px;
+  margin: 10px 10px;
+}
+
+.postDetail__info {
+  display: flex;
+  width: 100%;
+  max-width: 800px;
+  padding: 10px;
+  justify-content: space-between;
+  margin: 0 10px;
+}
+
+.postDetail h1 {
+  text-align: center;
+  padding: 15px;
+}
+
+.postDetail img {
+  height: 100%;
+  width: 100%;
+  max-width: 800px;
+  border-radius: 10px;
+}

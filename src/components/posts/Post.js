@@ -1,17 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { ConvertDateToString } from '../../helpers/dateHelper';
 import './Post.css';
 
 function Post({ id, title, content, published, image }) {
-  const date = published.split('T', 2);
-  const time = date[1].split('.', 1);
-
   return (
     <div onClick={() => console.log(id)} className='post'>
       <div className='post__column'>
-        <img className='post__image' src={image} alt='post' />
+        <Link to={`/post/${id}`}>
+          <img className='post__image' src={image} alt='post' />
+        </Link>
+
         <small className='post__published'>
-          Published {date[0]} {time[0]}
+          Published {published && ConvertDateToString(published)}
         </small>
       </div>
       <div className='post__column'>

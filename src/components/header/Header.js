@@ -1,7 +1,9 @@
 import { Button } from '@material-ui/core';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { signOut } from '../../redux/user/userSlice';
+import DropdownMenu from '../dropdown/DropdownMenu';
 import './Header.css';
 
 function Header() {
@@ -13,12 +15,16 @@ function Header() {
   };
   return (
     <div className='header'>
-      <h1>Simple Blog </h1>
+      <Link to='/'>
+        <h1>Blog </h1>
+      </Link>
+
       <div className='header__user'>
         <h3>{user?.username}</h3>
-        <Button onClick={handleSignOut} variant='contained'>
+        <DropdownMenu />
+        {/* <Button onClick={handleSignOut} variant='contained'>
           Sign Out
-        </Button>
+        </Button> */}
       </div>
     </div>
   );

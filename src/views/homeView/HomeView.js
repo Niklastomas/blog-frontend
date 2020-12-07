@@ -3,33 +3,44 @@ import { Link } from 'react-router-dom';
 import Post from '../../components/posts/Post';
 import './HomeView.css';
 import axios from '../../utils/axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { getPosts } from '../../redux/post/postSlice';
+import { CircularProgress } from '@material-ui/core';
 
 function HomeView() {
-  const [posts, setPosts] = useState([]);
+  const dispatch = useDispatch();
+  const { posts, status } = useSelector((state) => state.post);
+  console.log(status);
 
-  const fetchPosts = async () => {
-    const { data } = await axios.get('/api/Post');
-    console.log(data);
-    setPosts(data);
-  };
+  // const fetchPosts = async () => {
+  //   const { data } = await axios.get('/api/Post');
+  //   console.log(data);
+  //   setPosts(data);
+  // };
 
   useEffect(() => {
-    fetchPosts();
-  }, []);
+    dispatch(getPosts());
+  }, [dispatch]);
   return (
     <div className='home'>
-      <h1>Posts</h1>
-      {posts &&
-        posts.map((post) => (
-          <Post
-            key={post.id}
-            id={post.id}
-            title={post.title}
-            content={post.content}
-            image={post.image}
-            published={post.published}
-          />
-        ))}
+      {status === 'loading' ? (
+        <CircularProgress color='secondary' />
+      ) : (
+        <>
+          <h1>Posts</h1>
+          {posts &&
+            posts.map((post) => (
+              <Post
+                key={post.id}
+                id={post.id}
+                title={post.title}
+                content={post.content}
+                image={post.image}
+                published={post.published}
+              />
+            ))}
+        </>
+      )}
     </div>
   );
 }
