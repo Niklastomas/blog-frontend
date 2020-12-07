@@ -1,3 +1,4 @@
+import { PostAdd } from '@material-ui/icons';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from '../../utils/axios';
 
@@ -15,6 +16,11 @@ export const getPosts = createAsyncThunk('posts/getPosts', async () => {
 
 export const getPost = createAsyncThunk('posts/getPost', async (id) => {
   const { data } = await axios.get(`/api/Post/${id}`);
+  return data;
+});
+
+export const addPost = createAsyncThunk('posts/addPost', async (post) => {
+  const { data } = await axios.post('/api/Post', post);
   return data;
 });
 
@@ -42,6 +48,9 @@ const postSlice = createSlice({
     },
     [getPost.rejected]: (state, action) => {
       state.status = 'failed';
+    },
+    [addPost.fulfilled]: (state, action) => {
+      state.posts.push(action.payload);
     },
   },
 });

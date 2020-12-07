@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import PrivateRoute from '../routes/PrivateRoute';
 import HomeView from '../views/homeView/HomeView';
 import PostDetailView from '../views/postDetailView/PostDetailView';
+import CreatePostView from '../views/createPostView/CreatePostView';
 
 function App() {
   return (
@@ -13,7 +14,9 @@ function App() {
         <Switch>
           <Route exact path='/login' component={LoginView} />
           <Route exact path='/register' component={RegisterView} />
+          <PrivateRoute path='/post/new-post' component={CreatePostView} />
           <PrivateRoute path='/post/:id' component={PostDetailView} />
+
           <PrivateRoute exact path='/' component={HomeView} />
         </Switch>
       </Router>
