@@ -6,6 +6,7 @@ import PrivateRoute from '../routes/PrivateRoute';
 import HomeView from '../views/homeView/HomeView';
 import PostDetailView from '../views/postDetailView/PostDetailView';
 import CreatePostView from '../views/createPostView/CreatePostView';
+import YourPostView from '../views/yourPostView/YourPostView';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route exact path='/login' component={LoginView} />
           <Route exact path='/register' component={RegisterView} />
           <PrivateRoute path='/post/new-post' component={CreatePostView} />
+          <PrivateRoute path='/user/posts' component={YourPostView} />
           <PrivateRoute path='/post/:id' component={PostDetailView} />
 
           <PrivateRoute exact path='/' component={HomeView} />

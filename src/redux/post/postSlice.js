@@ -19,10 +19,27 @@ export const getPost = createAsyncThunk('posts/getPost', async (id) => {
   return data;
 });
 
+export const getUserPost = createAsyncThunk(
+  'posts/getUserPost',
+  async (userId) => {
+    const { data } = await axios.get(`/api/Post/GetUserPosts/${userId}`);
+    return data;
+  }
+);
+
 export const addPost = createAsyncThunk('posts/addPost', async (post) => {
   const { data } = await axios.post('/api/Post', post);
+  console.log(data);
   return data;
 });
+
+export const deletePost = createAsyncThunk(
+  'posts/deletePost',
+  async (postId) => {
+    const { data } = await axios.delete(`/api/Post/${postId}`);
+    return data;
+  }
+);
 
 const postSlice = createSlice({
   name: 'posts',
@@ -49,8 +66,28 @@ const postSlice = createSlice({
     [getPost.rejected]: (state, action) => {
       state.status = 'failed';
     },
+    [addPost.pending]: (state, action) => {
+      state.status = 'loading';
+    },
     [addPost.fulfilled]: (state, action) => {
-      state.posts.push(action.payload);
+      state.status = 'succeeded';
+    },
+    [addPost.rejected]: (state, action) => {
+      state.status = 'failed';
+    },
+    [getUserPost.pending]: (state, action) => {
+      state.status = 'loading';
+    },
+    [getUserPost.fulfilled]: (state, action) => {
+      state.status = 'succeeded';
+      state.posts = action.payload;
+    },
+    [deletePost.fulfilled]: (state, action) => {
+      state.status = 'succeeded';
+      return {
+        ...state,
+        posts: state.posts.filter((post) => post.id !== action.payload),
+      };
     },
   },
 });

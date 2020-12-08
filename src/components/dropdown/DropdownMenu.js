@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './DropdownMenu.css';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { signOut } from '../../redux/user/userSlice';
 
 function DropdownMenu() {
@@ -24,7 +24,7 @@ function DropdownMenu() {
         className={displayMenu ? 'dropdown__content show' : 'dropdown__content'}
       >
         <Link to='/post/new-post'>New Post</Link>
-        <Link to='/post/your-posts'>Your Posts</Link>
+        <Link to='/user/posts'>Your Posts</Link>
         <Link to='/user/profile'>Profile</Link>
         <Link onClick={() => dispatch(signOut())}>Sign Out</Link>
       </div>

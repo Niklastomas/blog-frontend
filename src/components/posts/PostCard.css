@@ -1,0 +1,35 @@
+.postCard {
+  /* width: fit-content; */
+  max-width: 250px;
+  height: fit-content;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 10px;
+  box-shadow: 3px 4px 10px 1px rgba(0, 0, 0, 0.75);
+  transition: 200ms ease-in-out;
+}
+
+.postCard a {
+  color: black;
+  text-decoration: none;
+}
+
+.postCard__icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.postCard img {
+  height: 150px;
+  width: 250px;
+  margin: 10px 0;
+  border-radius: 10px;
+}
+
+.postCard:hover {
+  filter: brightness(1.1);
+}

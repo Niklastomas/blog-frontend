@@ -12,6 +12,7 @@ function PostDetailView() {
   const { post, status } = useSelector((state) => state.post);
 
   useEffect(() => {
+    console.log('useEffect');
     dispatch(getPost(id));
   }, [dispatch, id]);
 
