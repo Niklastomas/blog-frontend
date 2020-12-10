@@ -1,4 +1,10 @@
-import { CircularProgress } from '@material-ui/core';
+import {
+  Backdrop,
+  CircularProgress,
+  Fade,
+  Slide,
+  Zoom,
+} from '@material-ui/core';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -17,30 +23,33 @@ function PostDetailView() {
   }, [dispatch, id]);
 
   return (
-    <div className='postDetail'>
+    <>
       {status === 'loading' ? (
-        <CircularProgress />
+        <Backdrop style={{ zIndex: 1 }} open={true}>
+          <CircularProgress color='secondary' />
+        </Backdrop>
       ) : (
-        <>
-          {' '}
-          <div className='postDetail__header'>
-            <h1>{post.title}</h1>
-            <img src={post.image} alt='' />
-            <div className='postDetail__info'>
-              <small>
-                {post.published && ConvertDateToString(post.published)}
-              </small>
-              <small>
-                By <strong>{post?.user?.username}</strong>
-              </small>
+        <Slide in={true} timeout={600}>
+          <div className='postDetail'>
+            <div className='postDetail__header'>
+              <h1>{post.title}</h1>
+              <img src={post.image} alt='' />
+              <div className='postDetail__info'>
+                <small>
+                  {post.published && ConvertDateToString(post.published)}
+                </small>
+                <small>
+                  By <strong>{post?.user?.username}</strong>
+                </small>
+              </div>
+            </div>
+            <div className='postDetail__body'>
+              <p>{post.content}</p>
             </div>
           </div>
-          <div className='postDetail__body'>
-            <p>{post.content}</p>
-          </div>{' '}
-        </>
+        </Slide>
       )}
-    </div>
+    </>
   );
 }
 

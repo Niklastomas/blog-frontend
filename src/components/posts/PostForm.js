@@ -1,16 +1,12 @@
-import { Button, CircularProgress, TextField } from '@material-ui/core';
-import { Alert } from '@material-ui/lab';
+import { Button, TextField } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { addPost } from '../../redux/post/postSlice';
+import { useSelector } from 'react-redux';
+
 import './PostForm.css';
 
-function PostForm() {
-  const dispatch = useDispatch();
-  const history = useHistory();
+function PostForm({ onSubmit }) {
   const { user } = useSelector((state) => state.user);
-  const { status } = useSelector((state) => state.post);
+  const { stauts } = useSelector((state) => state.post);
   const [post, setPost] = useState({
     title: '',
     content: '',
@@ -31,17 +27,12 @@ function PostForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    dispatch(addPost(post));
-
+    onSubmit(post);
     setPost({
       title: '',
       content: '',
       image: '',
     });
-    if (status === 'succeeded') {
-      history.push('/');
-    }
   };
 
   useEffect(() => {
@@ -55,49 +46,45 @@ function PostForm() {
 
   return (
     <form className='postForm' onSubmit={handleSubmit}>
-      {status === 'loading' ? (
-        <CircularProgress />
-      ) : (
-        <>
-          <TextField
-            onChange={handleChange}
-            style={{ margin: 10, maxWidth: 400, width: '100%' }}
-            label='Title'
-            type='text'
-            variant='outlined'
-            name='title'
-            value={post.title}
-          />
-          <TextField
-            onChange={handleChange}
-            style={{ margin: 10, maxWidth: 400, width: '100%' }}
-            label='Image Url'
-            type='text'
-            variant='outlined'
-            name='image'
-            value={post.image}
-          />
-          <TextField
-            onChange={handleChange}
-            style={{ margin: 10, width: '100%', maxWidth: 800 }}
-            id='outlined-multiline-static'
-            label='Story'
-            multiline
-            rows={20}
-            variant='outlined'
-            name='content'
-            value={post.content}
-          />
-          <Button
-            type='submit'
-            variant='contained'
-            color='primary'
-            disabled={canSubmit ? false : true}
-          >
-            Add New Post
-          </Button>
-        </>
-      )}
+      <>
+        <TextField
+          onChange={handleChange}
+          style={{ margin: 10, maxWidth: 400, width: '100%' }}
+          label='Title'
+          type='text'
+          variant='outlined'
+          name='title'
+          value={post.title}
+        />
+        <TextField
+          onChange={handleChange}
+          style={{ margin: 10, maxWidth: 400, width: '100%' }}
+          label='Image Url'
+          type='text'
+          variant='outlined'
+          name='image'
+          value={post.image}
+        />
+        <TextField
+          onChange={handleChange}
+          style={{ margin: 10, width: '100%', maxWidth: 800 }}
+          id='outlined-multiline-static'
+          label='Story'
+          multiline
+          rows={20}
+          variant='outlined'
+          name='content'
+          value={post.content}
+        />
+        <Button
+          type='submit'
+          variant='contained'
+          color='primary'
+          disabled={canSubmit ? false : true}
+        >
+          Add New Post
+        </Button>
+      </>
     </form>
   );
 }

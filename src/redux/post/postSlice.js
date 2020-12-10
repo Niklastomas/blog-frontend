@@ -29,7 +29,6 @@ export const getUserPost = createAsyncThunk(
 
 export const addPost = createAsyncThunk('posts/addPost', async (post) => {
   const { data } = await axios.post('/api/Post', post);
-  console.log(data);
   return data;
 });
 
@@ -70,6 +69,7 @@ const postSlice = createSlice({
       state.status = 'loading';
     },
     [addPost.fulfilled]: (state, action) => {
+      console.log(action.payload);
       state.status = 'succeeded';
     },
     [addPost.rejected]: (state, action) => {

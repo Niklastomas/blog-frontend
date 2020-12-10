@@ -5,7 +5,7 @@ import './HomeView.css';
 import axios from '../../utils/axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPosts } from '../../redux/post/postSlice';
-import { CircularProgress } from '@material-ui/core';
+import { Backdrop, CircularProgress } from '@material-ui/core';
 
 function HomeView() {
   const dispatch = useDispatch();
@@ -22,25 +22,29 @@ function HomeView() {
     dispatch(getPosts());
   }, [dispatch]);
   return (
-    <div className='home'>
+    <>
       {status === 'loading' ? (
-        <CircularProgress color='secondary' />
+        <Backdrop style={{ zIndex: 1 }} open={true}>
+          <CircularProgress color='secondary' />
+        </Backdrop>
       ) : (
-        <>
-          {posts &&
-            posts.map((post) => (
-              <Post
-                key={post.id}
-                id={post.id}
-                title={post.title}
-                content={post.content}
-                image={post.image}
-                published={post.published}
-              />
-            ))}
-        </>
+        <div className='home'>
+          <>
+            {posts &&
+              posts.map((post) => (
+                <Post
+                  key={post.id}
+                  id={post.id}
+                  title={post.title}
+                  content={post.content}
+                  image={post.image}
+                  published={post.published}
+                />
+              ))}
+          </>
+        </div>
       )}
-    </div>
+    </>
   );
 }
 
