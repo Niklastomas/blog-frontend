@@ -28,10 +28,10 @@ function CreatePostView() {
         unmountOnExit
       >
         <div className='createPost'>
-          <h1>Create a new post</h1>
-
           <>
-            <PostForm onSubmit={handleSubmit} />
+            <PostForm onSubmit={handleSubmit}>
+              <h1>Create a new post</h1>
+            </PostForm>
           </>
         </div>
       </Slide>

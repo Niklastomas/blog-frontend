@@ -65,9 +65,6 @@ const postSlice = createSlice({
     [getPost.rejected]: (state, action) => {
       state.status = 'failed';
     },
-    [addPost.pending]: (state, action) => {
-      state.status = 'loading';
-    },
     [addPost.fulfilled]: (state, action) => {
       console.log(action.payload);
       state.status = 'succeeded';

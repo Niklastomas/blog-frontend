@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import './PostForm.css';
 
-function PostForm({ onSubmit }) {
+function PostForm({ onSubmit, children }) {
   const { user } = useSelector((state) => state.user);
   const { stauts } = useSelector((state) => state.post);
   const [post, setPost] = useState({
@@ -46,45 +46,44 @@ function PostForm({ onSubmit }) {
 
   return (
     <form className='postForm' onSubmit={handleSubmit}>
-      <>
-        <TextField
-          onChange={handleChange}
-          style={{ margin: 10, maxWidth: 400, width: '100%' }}
-          label='Title'
-          type='text'
-          variant='outlined'
-          name='title'
-          value={post.title}
-        />
-        <TextField
-          onChange={handleChange}
-          style={{ margin: 10, maxWidth: 400, width: '100%' }}
-          label='Image Url'
-          type='text'
-          variant='outlined'
-          name='image'
-          value={post.image}
-        />
-        <TextField
-          onChange={handleChange}
-          style={{ margin: 10, width: '100%', maxWidth: 800 }}
-          id='outlined-multiline-static'
-          label='Story'
-          multiline
-          rows={20}
-          variant='outlined'
-          name='content'
-          value={post.content}
-        />
-        <Button
-          type='submit'
-          variant='contained'
-          color='primary'
-          disabled={canSubmit ? false : true}
-        >
-          Add New Post
-        </Button>
-      </>
+      {children}
+      <TextField
+        onChange={handleChange}
+        style={{ margin: 10, maxWidth: 400, width: '100%' }}
+        label='Title'
+        type='text'
+        variant='outlined'
+        name='title'
+        value={post.title}
+      />
+      <TextField
+        onChange={handleChange}
+        style={{ margin: 10, maxWidth: 400, width: '100%' }}
+        label='Image Url'
+        type='text'
+        variant='outlined'
+        name='image'
+        value={post.image}
+      />
+      <TextField
+        onChange={handleChange}
+        style={{ margin: 10, width: '100%', maxWidth: 800 }}
+        id='outlined-multiline-static'
+        label='Story'
+        multiline
+        rows={20}
+        variant='outlined'
+        name='content'
+        value={post.content}
+      />
+      <Button
+        type='submit'
+        variant='contained'
+        color='primary'
+        disabled={canSubmit ? false : true}
+      >
+        Add New Post
+      </Button>
     </form>
   );
 }
