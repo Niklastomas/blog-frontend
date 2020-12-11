@@ -4,9 +4,12 @@ import { Link } from 'react-router-dom';
 import { ConvertDateToString } from '../../helpers/dateHelper';
 import './Post.css';
 
-function Post({ id, title, content, published, image }) {
+function Post({ id, title, content, published, image, timeout }) {
   return (
-    <Zoom in={true}>
+    <Zoom
+      in={true}
+      style={{ transitionDelay: timeout ? `${timeout}ms` : '0ms' }}
+    >
       <div className='post'>
         <div className='post__column'>
           <Link to={`/post/${id}`}>

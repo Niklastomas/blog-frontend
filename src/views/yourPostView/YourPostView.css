@@ -1,5 +1,15 @@
 .yourPostView {
+  max-width: 1200px;
+  margin: 20px auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
+}
+
+@media screen and (max-width: 600px) {
+  .yourPostView {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }

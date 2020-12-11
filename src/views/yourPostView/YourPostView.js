@@ -24,14 +24,14 @@ function YourPostView() {
         </Backdrop>
       ) : (
         <div className='yourPostView'>
-          {posts?.map((post) => (
+          {posts?.map((post, index) => (
             <PostCard
               key={post.id}
               id={post.id}
               title={post.title}
-              //   content={post.content}
               image={post.image}
               published={post.published}
+              timeout={300 * (index + 1)}
             />
           ))}
         </div>

@@ -8,13 +8,17 @@ import { useDispatch } from 'react-redux';
 import { deletePost } from '../../redux/post/postSlice';
 import { Grow } from '@material-ui/core';
 
-function PostCard({ id, title, image, content, published }) {
+function PostCard({ id, title, image, content, published, timeout }) {
   const dispatch = useDispatch();
   const handleDelete = () => {
     dispatch(deletePost(id));
   };
   return (
-    <Grow in={true}>
+    <Grow
+      in={true}
+      style={{ transformOrigin: '0 0 0' }}
+      {...{ timeout: timeout }}
+    >
       <div className='postCard'>
         <Link to={`/post/${id}`}>
           <h3>{title}</h3>

@@ -31,7 +31,7 @@ function HomeView() {
         <div className='home'>
           <>
             {posts &&
-              posts.map((post) => (
+              posts.map((post, index) => (
                 <Post
                   key={post.id}
                   id={post.id}
@@ -39,6 +39,7 @@ function HomeView() {
                   content={post.content}
                   image={post.image}
                   published={post.published}
+                  timeout={200 * (index + 1)}
                 />
               ))}
           </>
