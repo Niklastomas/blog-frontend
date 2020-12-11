@@ -32,11 +32,11 @@ function PostDetailView() {
         <Slide in={true} timeout={600}>
           <div className='postDetail'>
             <div className='postDetail__header'>
-              <h1>{post.title}</h1>
-              <img src={post.image} alt='' />
+              <h1>{post?.title}</h1>
+              <img src={post?.image} alt='' />
               <div className='postDetail__info'>
                 <small>
-                  {post.published && ConvertDateToString(post.published)}
+                  {post?.published && ConvertDateToString(post.published)}
                 </small>
                 <small>
                   By <strong>{post?.user?.username}</strong>
@@ -44,7 +44,7 @@ function PostDetailView() {
               </div>
             </div>
             <div className='postDetail__body'>
-              <p>{post.content}</p>
+              <p>{post?.content}</p>
             </div>
           </div>
         </Slide>

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, Redirect, useHistory } from 'react-router-dom';
 import { login } from '../../redux/user/userSlice';
 import './LoginView.css';
-
+import CustomAlert from '../../components/alerts/CustomAlert';
 function LoginView() {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -34,18 +34,20 @@ function LoginView() {
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    await dispatch(login(user));
+    dispatch(login(user));
     history.push('/');
   };
   return (
     <div className='login'>
       <h1>Simple Blog</h1>
+
       {currentUser ? (
         <Redirect to='/' />
       ) : (
         <form onSubmit={handleSubmit} className='login__form'>
+          {error && <CustomAlert error>{error}</CustomAlert>}
           <div className='login__input'>
             <TextField
               fullWidth

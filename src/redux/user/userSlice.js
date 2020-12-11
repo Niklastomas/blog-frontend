@@ -4,7 +4,8 @@ import axios from '../../utils/axios';
 const initialState = {
   user: null,
   status: 'idle',
-  error: null,
+  success: '',
+  error: '',
 };
 
 export const login = createAsyncThunk('user/login', async (user) => {
@@ -19,12 +20,25 @@ export const register = createAsyncThunk('user/register', async (user) => {
   return data;
 });
 
+export const updatePassword = createAsyncThunk(
+  'user/updatePassword',
+  async (user) => {
+    const { data } = await axios.put('/api/Auth/updatePassword', user);
+    console.log(data);
+    return data;
+  }
+);
+
 const userSlice = createSlice({
   name: 'user',
   initialState: initialState,
   reducers: {
     signOut: (state) => {
       state.user = null;
+    },
+    clearMessages: (state) => {
+      state.success = '';
+      state.error = '';
     },
   },
   extraReducers: {
@@ -50,9 +64,16 @@ const userSlice = createSlice({
       state.status = 'failed';
       state.error = action.error.message;
     },
+    [updatePassword.fulfilled]: (state, action) => {
+      state.status = 'succeeded';
+      state.success = 'Successfully changed password';
+    },
+    [updatePassword.rejected]: (state, action) => {
+      state.error = 'Failed to change password';
+    },
   },
 });
 
-export const { signOut } = userSlice.actions;
+export const { signOut, clearMessages } = userSlice.actions;
 
 export default userSlice.reducer;
