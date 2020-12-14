@@ -41,13 +41,13 @@ function LoginView() {
   };
   return (
     <div className='login'>
-      <h1>Simple Blog</h1>
+      {error && <CustomAlert error>{error}</CustomAlert>}
+      <h1>Blog</h1>
 
       {currentUser ? (
         <Redirect to='/' />
       ) : (
         <form onSubmit={handleSubmit} className='login__form'>
-          {error && <CustomAlert error>{error}</CustomAlert>}
           <div className='login__input'>
             <TextField
               fullWidth

@@ -3,6 +3,8 @@ import counterReducer from '../features/counter/counterSlice';
 import userReducer from '../redux/user/userSlice';
 import postReducer from '../redux/post/postSlice';
 
+const userFromSessionStorage = JSON.parse(sessionStorage.getItem('user'));
+
 export default configureStore({
   reducer: {
     counter: counterReducer,
