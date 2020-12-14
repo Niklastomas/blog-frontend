@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PostForm from '../../components/posts/PostForm';
 import { addPost } from '../../redux/post/postSlice';

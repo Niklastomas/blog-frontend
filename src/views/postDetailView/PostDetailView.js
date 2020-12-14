@@ -1,10 +1,4 @@
-import {
-  Backdrop,
-  CircularProgress,
-  Fade,
-  Slide,
-  Zoom,
-} from '@material-ui/core';
+import { Backdrop, CircularProgress, Slide } from '@material-ui/core';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -18,7 +12,6 @@ function PostDetailView() {
   const { post, status } = useSelector((state) => state.post);
 
   useEffect(() => {
-    console.log('useEffect');
     dispatch(getPost(id));
   }, [dispatch, id]);
 

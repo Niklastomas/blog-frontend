@@ -13,13 +13,12 @@ const initialState = {
 export const login = createAsyncThunk('user/login', async (user) => {
   const { data } = await axios.post('/api/Auth/login', user);
   sessionStorage.setItem('user', JSON.stringify(data));
-  console.log(data);
   return data;
 });
 
 export const register = createAsyncThunk('user/register', async (user) => {
   const { data } = await axios.post('/api/Auth/register', user);
-  console.log(data);
+  sessionStorage.setItem('user', JSON.stringify(data));
   return data;
 });
 
@@ -27,7 +26,6 @@ export const updatePassword = createAsyncThunk(
   'user/updatePassword',
   async (user) => {
     const { data } = await axios.put('/api/Auth/updatePassword', user);
-    console.log(data);
     return data;
   }
 );
@@ -38,6 +36,7 @@ const userSlice = createSlice({
   reducers: {
     signOut: (state) => {
       state.user = null;
+      sessionStorage.removeItem('user');
     },
     clearMessages: (state) => {
       state.success = '';

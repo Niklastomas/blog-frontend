@@ -5,7 +5,7 @@ import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import { Button, Slide, TextField } from '@material-ui/core';
-import { updatePassword, clearMessages } from '../../redux/user/userSlice';
+import { updatePassword } from '../../redux/user/userSlice';
 import CustomAlert from '../../components/alerts/CustomAlert';
 
 function UserProfileView() {

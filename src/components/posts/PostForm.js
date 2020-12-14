@@ -6,7 +6,6 @@ import './PostForm.css';
 
 function PostForm({ onSubmit, children }) {
   const { user } = useSelector((state) => state.user);
-  const { stauts } = useSelector((state) => state.post);
   const [post, setPost] = useState({
     title: '',
     content: '',
@@ -36,7 +35,6 @@ function PostForm({ onSubmit, children }) {
   };
 
   useEffect(() => {
-    console.log('useEffect');
     if (post.title && post.content && post.image) {
       setCanSubmit(true);
     } else {

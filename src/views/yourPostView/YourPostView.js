@@ -1,7 +1,6 @@
 import { Backdrop, CircularProgress } from '@material-ui/core';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
 import PostCard from '../../components/posts/PostCard';
 import { getUserPost } from '../../redux/post/postSlice';
 import './YourPostView.css';
